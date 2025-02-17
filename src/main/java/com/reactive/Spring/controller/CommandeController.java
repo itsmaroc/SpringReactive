@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,8 +14,6 @@ import com.reactive.Spring.Services.CommandeService;
 import com.reactive.Spring.dto.CommandeDTO;
 import com.reactive.Spring.model.entity.Commandes;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
-import jakarta.validation.Valid;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -40,7 +39,7 @@ public class CommandeController {
 	}
 	
 	@PostMapping("/addcommande") 
-	public Mono<Commandes> addCommande(@Valid @RequestBody CommandeDTO commande) {
+	public Mono<Commandes> addCommande(@RequestBody CommandeDTO commande) {
 
 		System.out.println("Check Commande");
 		System.out.println(commande.getDate());

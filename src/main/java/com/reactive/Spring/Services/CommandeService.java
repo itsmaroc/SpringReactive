@@ -2,8 +2,6 @@ package com.reactive.Spring.Services;
 
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.reactive.Spring.dto.CommandeDTO;
 import com.reactive.Spring.model.dao.ClientsRepository;
@@ -59,8 +57,6 @@ public class CommandeService {
 	public Mono<Commandes> updateCommandes(Commandes commande, Long id) {
 	    return commandesRepository.findById(id)
 	        .flatMap(existingCommande -> {
-	            log.info("Commande existante: {}", existingCommande);
-	            log.info("Nouvelle valeur de clientID: {}", commande.getClientID());
 
 	            if (commande.getClientID() == null) {
 	                return Mono.error(new IllegalArgumentException("clientID ne peut pas être NULL"));
